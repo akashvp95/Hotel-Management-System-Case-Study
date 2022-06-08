@@ -1,13 +1,13 @@
 
-select * from SetRoomRates
-select * from RoomManagement
-select * from AdminLogin
+Create table SetRoomRates(RoomTypeId int primary key,RoomType varchar(100) not null,BasePrice decimal(18,2)not null)
 
-drop table roommanagement
 create table RoomManagement (RoomNo int primary key,Facilities varchar(100) not null,No_Of_Adults int not null,
 RoomTypeId int not null);
 
 insert into RoomManagement values(101,'Fully Furnished',2,1)
+
+select * from SetRoomRates
+select * from RoomManagement
 
 ---Reservation
 
@@ -39,23 +39,6 @@ SELECT * FROM Payment
 
 ---------
 
-CREATE TABLE Login
-(
-EmailId VARCHAR(100) PRIMARY KEY,
-UserPassword VARCHAR(20) NOT NULL,
-)
-
-insert into login values('user2@gmail.com','pass2')
-select * from login
-
-
----
-create table SignUp(UserName varchar(100)primary key, Email varchar(100) not null, Password varchar(100)not null)
-
-select * from signup
-
-drop table SignUp
-
 
 --------------
 create table SearchRooms
@@ -72,7 +55,6 @@ insert into SearchRooms values('2022-05-25','2022-05-30',5,'CoupleRooms')
 insert into SearchRooms values('2022-07-10','2022-08-30',10,'SuitRooms')
 
 Select * from SearchRooms
-
 
 -----
 Create Table UserRegistration(FirstName varchar(100) not null,LastName varchar(100) not null,PhoneNumber int not null,UserName varchar(100)not null,
@@ -93,3 +75,10 @@ SELECT count(UserName) as matches FROM [dbo].[UserRegistration]
 WHERE UserName=@UserName AND Password=@Password
 END
 GO
+
+-----
+Create table Booking(PhotoFileName varchar(500),RoomType varchar(100) not null,Facilities varchar(500) not null,
+					 No_of_Adults int not null,BasePrice decimal not null)
+
+Insert into Booking values('anonymous.png','Single Room','Wifi',2,1500)
+select * from Booking
