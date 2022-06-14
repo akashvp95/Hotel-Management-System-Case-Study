@@ -1,10 +1,11 @@
 
 Create table SetRoomRates(RoomTypeId int primary key,RoomType varchar(100) not null,BasePrice decimal(18,2)not null)
 
+drop table roommanagement
 create table RoomManagement (RoomNo int primary key,Facilities varchar(100) not null,No_Of_Adults int not null,
-RoomTypeId int not null);
+RoomType varchar(100) not null);
 
-insert into RoomManagement values(101,'Fully Furnished',2,1)
+insert into RoomManagement values(101,'Fully Furnished',2,'Single')
 
 select * from SetRoomRates
 select * from RoomManagement
@@ -21,12 +22,12 @@ Create table reservation(
 		RoomType varchar(100)not null,
 		NoOfMembers int not null,
 		CheckIn varchar(255)not null,
-		CheckOut varchar(255)not null,
-		TotalAmount int not null);
+		CheckOut varchar(255)not null);
 
 select * from reservation;
+drop table reservation
 
-insert into reservation values(1,'Sri','Sri@gmail.com',938477,'hyderabad','Pancard','Single Room',2,'06/06/2022','07/06/2022',1500);
+insert into reservation values(1,'Sri','Sri@gmail.com',938477,'hyderabad','Pancard','Single Room',2,'06/06/2022','07/06/2022');
 
 ---Payment
 CREATE TABLE Payment
@@ -57,10 +58,11 @@ insert into SearchRooms values('2022-07-10','2022-08-30',10,'SuitRooms')
 Select * from SearchRooms
 
 -----
-Create Table UserRegistration(FirstName varchar(100) not null,LastName varchar(100) not null,PhoneNumber int not null,UserName varchar(100)not null,
+Create Table UserRegistration(Name varchar(100) not null,UserName varchar(100)not null,
 Email varchar(100) not null, Password varchar(100) not null)
 
-insert into UserRegistration values('Akash','VP',123456,'ak123','akash@gmail.com','pass123')
+insert into UserRegistration values('Akash','ak123','akash@gmail.com','pass123')
+select * from UserRegistration
 
 SET ANSI_NULLS ON
 GO
